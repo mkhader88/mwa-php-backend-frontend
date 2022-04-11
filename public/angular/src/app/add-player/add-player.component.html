@@ -1,0 +1,13 @@
+<form  #addPlayerForm="ngForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>
+                name:
+                <input name="name" placeholder="name" ngModel/>
+            </label>
+            <label>
+                age:
+                <input name="age" placeholder="age" ngModel/>
+            </label>
+            <button type="submit">Add</button>
+        </div>
+    </form>

@@ -1,0 +1,23 @@
+<br>
+<form #teamForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>
+            Country:
+            <input name="country" placeholder="country" ngModel/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Year:
+            <input name="year" placeholder="Year" ngModel/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Color:
+            <input name="color" placeholder="Color" ngModel/>
+        </label>
+    </div>
+    
+    <button type="submit">Add</button>
+</form>

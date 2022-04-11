@@ -1,0 +1,15 @@
+<H2>{{team.country}} </H2> 
+Year :- {{team.year}}<br>
+color:- {{team.color}}<br>
+<br>
+<h3>Players</h3>
+<app-add-player [teamId]="team._id" (addPlayerEmitter)="onPlayerChange($event)"></app-add-player>
+
+<ul>
+    <li *ngFor="let player of team.players">
+        <a routerLink="/team/{{team._id}}/player/{{player._id}}"> {{player.name}}
+        </a>
+    </li>
+    </ul>
+<app-delete [teamId]=team._id></app-delete>
+<button routerLink="/team/edit/{{team._id}}">Edit Team</button>

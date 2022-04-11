@@ -1,0 +1,23 @@
+<form #teamForm="ngForm" (ngSubmit)="onUpdateClick()">
+    <div>
+        <label>
+            Country:
+            <input name="country" placeholder="country" ngModel/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Year:
+            <input name="year" placeholder="Year" ngModel/>
+        </label>
+    </div>
+    <div>
+        <label>
+            Color:
+            <input name="color" placeholder="COlor" ngModel/>
+        </label>
+    </div>
+    <input  type="hidden" name="_id" ngModel/>
+    <input  type="hidden" name="players" ngModel/>
+    <button type="submit">Update</button>
+</form>

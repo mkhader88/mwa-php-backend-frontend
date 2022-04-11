@@ -1,0 +1,10 @@
+<h2>Teams</h2>
+<ul>
+    <li *ngFor="let team of teams">
+    <a routerLink="/team/{{team._id}}">
+    {{team.country}}
+    </a>
+    <button routerLink="/team/edit/{{team._id}}">Edit</button>
+    </li>
+    </ul>
+    <button (click)="addTeam()">Add Team</button>
