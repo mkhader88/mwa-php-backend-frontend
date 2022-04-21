@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "startBackend": "npm start",
-    "startFrontend": "cd ./public/angular && npm start",
+    "startBackend": "nodemon",
+    "startFrontend": "cd ./public/angular && npm start --env=dev",
     "startAll": "npm-run-all --parallel startBackend startFrontend",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

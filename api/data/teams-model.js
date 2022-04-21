@@ -26,4 +26,6 @@ const teamSchema = mongoose.Schema({
     },
     players: [playerSchema]
 });
+
+teamSchema.index({'$**': 'text'});
 const Team = mongoose.model("Team", teamSchema, "Teams");

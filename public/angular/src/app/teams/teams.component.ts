@@ -28,11 +28,6 @@ export class TeamsComponent implements OnInit {
 
   teams: Teams[]=[];
 
-   teams2: any[]= [{
-    _id: "123",
-    title: "Catan",
-    price: 39.99
-    }];
 
     constructor(private teamsService:TeamsDataService,private _router:Router) { }
     ngOnInit(): void {

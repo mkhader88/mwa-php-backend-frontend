@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { PlayerComponent } from './player/player.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     AddTeamComponent,
     PlayerComponent,
     EditTeamComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
       {
         path: "teams",
         component: TeamsComponent
+      },
+            {
+        path: "search/:search",
+        component: SearchComponent
       },
       {
         path:"team/:teamId",

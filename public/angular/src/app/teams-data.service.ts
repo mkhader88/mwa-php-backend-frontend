@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Players, Teams } from './teams/teams.component';
-import { environment } from 'src/environments/environment.dev';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,9 @@ export class TeamsDataService {
   public getTeams(): Observable<Teams[]> {
     return this.http.get<Teams[]>(environment.BASE_URL + '/teams');
   }
-
+  public searchTeams(search:string): Observable<Teams[]> {
+    return this.http.get<Teams[]>(environment.BASE_URL + '/teams/search?search='+search);
+  }
   getOneTeam(teamId:string):Observable<Teams>{
     const url:string = environment.BASE_URL+"/teams/"+teamId;
     return this.http.get<Teams>(url);

@@ -3,6 +3,8 @@ const router= express.Router();
 const teamsController= require("../controllers/TennisTeams.controller");
 const playersController= require("../controllers/players.controller");
 
+router.route("/teams/search")
+.get(teamsController.findAll);
 router.route("/teams")
 .post(teamsController.addOne)
 .get(teamsController.getAll);

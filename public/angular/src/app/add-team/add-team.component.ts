@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+  import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TeamsDataService } from '../teams-data.service';
 import { Teams } from '../teams/teams.component';
@@ -24,8 +24,8 @@ export class AddTeamComponent implements OnInit {
   onSubmit(){
     this.teamDataservice.addTeam(this.teamForm.value).subscribe({
       next:(result)=>{
-        this.setDefaultForm();      
-      }, 
+        this.setDefaultForm();
+      },
       error:(err)=>{
         console.log("error", err);
         alert("Error "+err);
