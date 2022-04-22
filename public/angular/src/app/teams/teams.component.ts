@@ -27,10 +27,15 @@ export class Teams{
 export class TeamsComponent implements OnInit {
 
   teams: Teams[]=[];
-
+  userLoggedIn!:boolean;
 
     constructor(private teamsService:TeamsDataService,private _router:Router) { }
     ngOnInit(): void {
+      if(localStorage.getItem('userData')){
+        this.userLoggedIn=true;
+      }else{
+        this.userLoggedIn=false;
+      }
     this.getDataDB();
     }
 

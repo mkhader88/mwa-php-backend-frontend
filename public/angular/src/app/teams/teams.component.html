@@ -4,7 +4,7 @@
     <a routerLink="/team/{{team._id}}">
     {{team.country}}
     </a>
-    <button routerLink="/team/edit/{{team._id}}">Edit</button>
+    <button routerLink="/team/edit/{{team._id}}" *ngIf="userLoggedIn">Edit</button>
     </li>
     </ul>
     <button (click)="addTeam()">Add Team</button>

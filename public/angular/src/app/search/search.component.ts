@@ -10,10 +10,15 @@ import { Teams } from '../teams/teams.component';
 })
 export class SearchComponent implements OnInit {
   teams: Teams[]=[];
+  userLoggedIn!:boolean;
 
   constructor(private teamsService:TeamsDataService,private route:ActivatedRoute,private _router:Router) { }
   ngOnInit(): void {
-  //this.getDataDB();
+    if(localStorage.getItem('userData')){
+      this.userLoggedIn=true;
+    }else{
+      this.userLoggedIn=false;
+    }
   }
   getDataDB(event:any):void{
     console.log(event.target.value);

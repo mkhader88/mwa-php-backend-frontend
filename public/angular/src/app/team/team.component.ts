@@ -12,20 +12,27 @@ export class TeamComponent implements OnInit {
   @Input()
   teamId!:string;
   team!:Teams;
+  userLoggedIn!:boolean;
+
   constructor(private route:ActivatedRoute, private teamsDataservice:TeamsDataService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('userData')){
+      this.userLoggedIn=true;
+    }else{
+      this.userLoggedIn=false;
+    }
     const teamId = this.route.snapshot.params["teamId"];
     this.teamsDataservice.getOneTeam(teamId).subscribe(team=>{
       console.log(team);
-      
+
       this.team=team});
   }
   _updateTeam(){
     this.teamsDataservice.getOneTeam(this.route.snapshot.params["teamId"]).subscribe({
       next:(result)=>{
         this.team = result;
-      }, 
+      },
       error:(err)=>{
         console.log("error", err);
       },

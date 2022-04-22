@@ -1,9 +1,9 @@
-<H2>{{team.country}} </H2> 
+<H2>{{team.country}} </H2>
 Year :- {{team.year}}<br>
 color:- {{team.color}}<br>
 <br>
 <h3>Players</h3>
-<app-add-player [teamId]="team._id" (addPlayerEmitter)="onPlayerChange($event)"></app-add-player>
+<app-add-player [teamId]="team._id" (addPlayerEmitter)="onPlayerChange($event)" *ngIf="userLoggedIn"></app-add-player>
 
 <ul>
     <li *ngFor="let player of team.players">
@@ -11,5 +11,5 @@ color:- {{team.color}}<br>
         </a>
     </li>
     </ul>
-<app-delete [teamId]=team._id></app-delete>
-<button routerLink="/team/edit/{{team._id}}">Edit Team</button>
+<app-delete [teamId]=team._id *ngIf="userLoggedIn"></app-delete>
+<button routerLink="/team/edit/{{team._id}}" *ngIf="userLoggedIn">Edit Team</button>

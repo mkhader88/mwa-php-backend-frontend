@@ -18,8 +18,6 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +35,7 @@ import { LogoutComponent } from './logout/logout.component';
     ErrorPageComponent,
     TeamsComponent,
     SearchComponent,
-    RegisterComponent,
-    LoginComponent,
-    LogoutComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

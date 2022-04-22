@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Team = mongoose.model(process.env.TEAM_MODEL);
+const jwt = require('jsonwebtoken');
 const getAll = function (req, res) {
 
     let offset = parseInt(process.env.DEFAULT_FIND_OFFSET, 10);
@@ -83,9 +84,21 @@ const _getOneResult = function (team,res) {
     }
     res.status(response.status).json(response.message);
 }
+const _validateToken = function (req, res){
+    const token =
+        req.body.token || req.query.token || req.headers["x-access-token"];
 
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log(decoded);
+    } catch (err) {
+        //return res.status(401).send("Invalid Token");
+    }
+}
 const addOne = function (req, res) {
     console.log("Team AddOne request");
+    //validating the token
+    _validateToken(req, res);
     console.log(req.body);
     const newTeam = {
         country: req.body.country, color: req.body.color, year: req.body.year, reviews: []
@@ -99,6 +112,8 @@ const addOne = function (req, res) {
 }
 const updateOne = function (req, res) {
     console.log("Team UpdateOne request");
+    //validating the token
+    _validateToken(req, res);
     const teamId = req.params.teamId;
 
     Team.findByIdAndUpdate(teamId,{
@@ -126,6 +141,8 @@ const _updateSuccessResult = function (team,res){
     res.status(response.status).json(response.message);
 }
 const deleteOne = function (req, res) {
+    //validating the token
+    _validateToken(req, res);
     const teamId = req.params.teamId;
     Team.findByIdAndDelete(teamId).exec()
         .then((deletedTeam) => _deleteSuccessResult(deletedTeam,res))

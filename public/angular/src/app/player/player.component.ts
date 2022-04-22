@@ -11,9 +11,16 @@ import { Players } from '../teams/teams.component';
 export class PlayerComponent implements OnInit {
   playerId!:string;
   player!:any;
+  userLoggedIn!:boolean;
+
   constructor(private route:ActivatedRoute, private router:Router, private teamsDataservice:TeamsDataService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('userData')){
+      this.userLoggedIn=true;
+    }else{
+      this.userLoggedIn=false;
+    }
     const playerId = this.route.snapshot.params["playerId"];
     const teamId = this.route.snapshot.params["teamId"];
     this.teamsDataservice.getOnePlayer(teamId,playerId).subscribe(player=>{
@@ -23,7 +30,7 @@ export class PlayerComponent implements OnInit {
     });
   }
 
- 
+
   deletePlayer():void{
     const playerId = this.route.snapshot.params["playerId"];
     const teamId = this.route.snapshot.params["teamId"];

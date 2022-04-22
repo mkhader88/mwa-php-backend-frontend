@@ -1,9 +1,23 @@
-<app-login></app-login>
-<app-logout></app-logout>
+<form  #loginForm="ngForm" (ngSubmit)="onLogin()" style="float:right;" *ngIf="!userLoggedIn">
+  <div>
+    <label>
+      <input name="username" placeholder="Username" ngModel/>
+    </label>
+    <label>
+      <input name="password" type="password" placeholder="Password" ngModel/>
+    </label>
+    <button type="submit">Login</button>
+  </div>
+</form>
+<form  #logoutForm="ngForm" (ngSubmit)="onLogout()" style="float:right;" *ngIf="userLoggedIn">
+  <div>
+    <button type="submit">Logout</button>
+  </div>
+</form>
 <nav>
     <button (click)="onHome()">Home</button>
     <button (click)="onTeams()">Teams</button>
     <button (click)="onSearch()">Search</button>
-    <button (click)="onRegister()">Register</button>
+    <button (click)="onRegister()" *ngIf="!userLoggedIn">Register</button>
 </nav>
 

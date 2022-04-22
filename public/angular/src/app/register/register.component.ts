@@ -17,15 +17,23 @@ export class RegisterComponent implements OnInit {
   @ViewChild("teamForm")
   teamForm!:NgForm;
   user!:Users;
+  message!:string;
+  color!:string;
   constructor(private service:UsersDataService) { }
 
   ngOnInit(): void {
+    this.message="";
+    this.color="";
   }
   setDefaultForm(){
     this.user = new Users();
     this.teamForm.setValue(this.user);
   }
   onSubmit(){
+    if(this.teamForm.value.password!=this.teamForm.value.repeatPassword){
+      this.message="Password and Repeat Password not Match";
+      this.color="red";
+    }else{
     this.service.register(this.teamForm.value).subscribe({
       next:(result)=>{
         this.setDefaultForm();
@@ -35,8 +43,10 @@ export class RegisterComponent implements OnInit {
         alert("Error "+err);
       },
       complete:()=>{
-        alert("User Registered Successfully");
+        this.message="User Registered Successfully";
+        this.color="green";
       }
     });
+    }
   }
 }

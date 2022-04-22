@@ -1,5 +1,17 @@
 const mongoose = require("mongoose");
 const team = mongoose.model(process.env.TEAM_MODEL);
+const jwt = require('jsonwebtoken');
+const _validateToken = function (req, res){
+    const token =
+        req.body.token || req.query.token || req.headers["x-access-token"];
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log(decoded);
+    } catch (err) {
+        //return res.status(401).send("Invalid Token");
+    }
+}
 const getAll = function (req, res) {
     console.log("GET players Controller");
     const teamId = req.params.teamId;
@@ -30,6 +42,8 @@ const _getOneSuccess = function (team,res) {
 
 const addOne = function (req, res) {
     console.log("Add One player Controller");
+    //validating the token
+    _validateToken(req, res);
     const teamId = req.params.teamId;
     team.findById(teamId).select("players").exec()
         .then((team) => _addOneSuccess(team,res,req))
@@ -72,6 +86,8 @@ const _savePlayerSuccess = function (updatedTeam,res) {
 
 const updateOne = function (req, res) {
     console.log("Update One player Controller");
+    //validating the token
+    _validateToken(req, res);
     const teamId = req.params.teamId;
     team.findById(teamId).select("players").exec()
         .then((team) => _updateOneSuccess(team,res,req))
@@ -112,6 +128,8 @@ const _updatePlayer = function (req, res, team) {
 
 const deleteOne = function (req, res) {
     console.log("Delete One player Controller");
+    //validating the token
+    _validateToken(req, res);
     const teamId = req.params.teamId;
     team.findById(teamId).select("players").exec()
         .then((team)=>_deleteOneSuccess(team,res,req))
