@@ -2,24 +2,30 @@ const express= require("express");
 const router= express.Router();
 const teamsController= require("../controllers/TennisTeams.controller");
 const playersController= require("../controllers/players.controller");
+const usersController= require("../controllers/users.controller");
 
 router.route("/teams/search")
-.get(teamsController.findAll);
+    .get(teamsController.findAll);
 router.route("/teams")
-.post(teamsController.addOne)
-.get(teamsController.getAll);
+    .post(teamsController.addOne)
+    .get(teamsController.getAll);
 router.route("/teams/:teamId")
-.delete(teamsController.deleteOne)
-.put(teamsController.updateOne)
-.get(teamsController.getOne);
+    .delete(teamsController.deleteOne)
+    .put(teamsController.updateOne)
+    .get(teamsController.getOne);
 router.route("/teams/:teamId/players")
-.post(playersController.addOne)
-.get(playersController.getAll);
+    .post(playersController.addOne)
+    .get(playersController.getAll);
 router.route("/teams/:teamId/players/:playerId")
-.put(playersController.updateOne)
-.delete(playersController.deleteOne)
-.get(playersController.getOne);
+    .put(playersController.updateOne)
+    .delete(playersController.deleteOne)
+    .get(playersController.getOne);
 
 
+router.route("/users/register")
+    .post(usersController.register);
+
+router.route("/users/login")
+    .post(usersController.login);
 
 module.exports = router;

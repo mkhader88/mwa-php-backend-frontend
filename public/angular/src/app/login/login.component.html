@@ -1,0 +1,11 @@
+<form  #loginForm="ngForm" (ngSubmit)="onSubmit()" style="float:right;" *ngIf="!userLoggedIn">
+  <div>
+    <label>
+      <input name="username" placeholder="Username" ngModel/>
+    </label>
+    <label>
+      <input name="password" type="password" placeholder="Password" ngModel/>
+    </label>
+    <button type="submit">Login</button>
+  </div>
+</form>

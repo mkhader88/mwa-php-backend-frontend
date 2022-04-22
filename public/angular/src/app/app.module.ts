@@ -17,6 +17,9 @@ import { PlayerComponent } from './player/player.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SearchComponent } from './search/search.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,11 @@ import { SearchComponent } from './search/search.component';
     PlayerComponent,
     EditTeamComponent,
     ErrorPageComponent,
-    TeamsComponent
+    TeamsComponent,
+    SearchComponent,
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +54,12 @@ import { SearchComponent } from './search/search.component';
         path: "teams",
         component: TeamsComponent
       },
-            {
-        path: "search/:search",
+      {
+        path: "register",
+        component: RegisterComponent
+      },
+      {
+        path: "search",
         component: SearchComponent
       },
       {
@@ -71,9 +82,9 @@ import { SearchComponent } from './search/search.component';
         path: "**",
         component:ErrorPageComponent
         }
-        
+
       ])
-      
+
   ],
   providers: [],
   bootstrap: [AppComponent]

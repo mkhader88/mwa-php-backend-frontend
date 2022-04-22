@@ -1,6 +1,11 @@
-<h2>Teams</h2>
+<h2>Search Teams</h2>
+<input type="text" (change)="getDataDB($event)" />
+<br>
 <ul>
-    <li *ngFor="let team of teams">
-        {{team.country}}
-    </li>
+  <li *ngFor="let team of teams">
+    <a routerLink="/team/{{team._id}}">
+      {{team.country}}
+    </a>
+    <button routerLink="/team/edit/{{team._id}}">Edit</button>
+  </li>
 </ul>

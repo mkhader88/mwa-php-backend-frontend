@@ -1,0 +1,30 @@
+<p>register User!</p>
+
+<br>
+<form #teamForm="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Name:
+      <input name="name" placeholder="Name" ngModel/>
+    </label>
+  </div>
+  <div>
+    <label>
+      Username:
+      <input name="username" placeholder="Username" ngModel/>
+    </label>
+  </div>
+  <div>
+    <label>
+      Password:
+      <input name="password" type="password" placeholder="Password" ngModel/>
+    </label>
+  </div>
+  <div>
+    <label>
+      Repeat Password:
+      <input name="repeatPassword" type="password" placeholder="Repeat Password" ngModel/>
+    </label>
+  </div>
+  <button type="submit">Register</button>
+</form>

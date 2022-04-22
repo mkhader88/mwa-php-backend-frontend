@@ -15,7 +15,12 @@ onHome(): void {
 onTeams(): void {
   this._router.navigate(['teams']);
 }
-
+onSearch(): void {
+  this._router.navigate(['search']);
+}
+onRegister(): void {
+  this._router.navigate(['register']);
+}
   ngOnInit(): void {
   }
 

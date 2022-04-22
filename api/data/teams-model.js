@@ -28,4 +28,4 @@ const teamSchema = mongoose.Schema({
 });
 
 teamSchema.index({'$**': 'text'});
-const Team = mongoose.model("Team", teamSchema, "Teams");
+const Team = mongoose.model(process.env.TEAM_MODEL, teamSchema, process.env.DB_TEAMS_COLLECTION);

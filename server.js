@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./api/data/db.js");
+require("./api/data/users-model.js");
 const express = require("express");
 const path = require("path");
 const routes= require("./api/routes");

@@ -13,14 +13,15 @@ export class SearchComponent implements OnInit {
 
   constructor(private teamsService:TeamsDataService,private route:ActivatedRoute,private _router:Router) { }
   ngOnInit(): void {
-  this.getDataDB();
+  //this.getDataDB();
   }
-  getDataDB():void{
-    console.log(this.route.snapshot.params["search"]);
-    
-    this.teamsService.searchTeams(this.route.snapshot.params["search"]).subscribe(teams => {
+  getDataDB(event:any):void{
+    console.log(event.target.value);
+
+    this.teamsService.searchTeams(event.target.value).subscribe(teams => {
       console.log(teams);
-      
+
       this.teams= teams; });
   }
+
 }
